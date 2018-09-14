@@ -15,19 +15,25 @@ body {
 
 /* Style the header */
 header {
-    background-color: #666;
-    padding: 30px;
-    text-align: center;
-    font-size: 35px;
-    color: white;
+	background-color: #7371FC;
+	padding: 30px;
+	text-align: center;
+	font-size: 35px;
+	color: white;
 }
 
-/* Create two columns/boxes that floats next to each other */
+/* Container for flexboxes */
+section {
+    display: -webkit-flex;
+    display: flex;
+}
+
+/* Style the navigation menu */
 nav {
-    float: left;
-    width: 30%;
- /*   height: 300px; /* only for demonstration, should be removed */
-    background: #ccc;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    background: #CDC1FF;
     padding: 20px;
 }
 
@@ -37,62 +43,100 @@ nav ul {
     padding: 0;
 }
 
-article {
-    float: left;
-    padding: 20px;
-    width: 70%;
-    background-color: #f1f1f1;
-   /* height: 300px; /* only for demonstration, should be removed */
+nav li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
 }
 
-/* Clear floats after the columns */
-section:after {
-    content: "";
-    display: table;
-    clear: both;
+nav li a.active {
+    background-color: #A594F9;
+}
+
+nav li a:hover:not(.active) {
+    background-color: #E5D9F2;
+}
+
+/* Style the content */
+article {
+    -webkit-flex: 3;
+    -ms-flex: 3;
+    flex: 3;
+    background-color: #F5EFFF;
+    padding: 10px;
 }
 
 /* Style the footer */
 footer {
-    background-color: #777;
+    background-color: #7371FC;
     padding: 10px;
     text-align: center;
     color: white;
 }
 
-/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	empty-cells: show;
+}
+
+th {
+	height: 50px;
+}
+
+/* Responsive layout - makes the menu and the content (inside the section) sit on top of each other instead of next to each other */
 @media (max-width: 600px) {
-    nav, article {
-        width: 100%;
-        height: auto;
+    section {
+      -webkit-flex-direction: column;
+      flex-direction: column;
     }
 }
+
 </style>
 </head>
 <body>
 
 <header>
-  <h2>Quote History</h2>
+   <h2>Quote History</h2> 
 </header>
 
 <section>
   <nav>
     <ul>
-      <li><a href="index.html">Return To Homepage</a></li>
+      <li><a href="index.html">Home</a></li>
       <li><a href="clientinfo.html">Client Information</a></li>
       <li><a href="getquote.html">Request a Quote</a></li>
+      <li><a class="active" href="history.html">Quote History</a></li>
     </ul>
   </nav>
   
   <article>
-    <h1>London</h1>
-    <p>London is the capital city of England. It is the most populous city in the  United Kingdom, with a metropolitan area of over 13 million inhabitants.</p>
-    <p>Standing on the River Thames, London has been a major settlement for two millennia, its history going back to its founding by the Romans, who named it Londinium.</p>
+    <h1>Quote History</h1>
+		<table style="width:100%">
+		<tr>
+			<th>Item #</th>
+			<th>Request Date</th> 
+			<th>Delivery Date</th>
+			<th>Gallons</th>
+			<th>Rate</th>
+			<th>Total Price</th>
+		</tr>
+		<tr>
+		 <!-- &nbsp for blank cells -->
+			<td>&nbsp</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		</table>
   </article>
 </section>
 
 <footer>
-  <p>Footer</p>
+  <p>Copyright © 2018 Jordan Williamson & Michelle Pham. All rights reserved.</p>
 </footer>
 
 </body>
