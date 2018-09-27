@@ -1,0 +1,21 @@
+/*
+REMAINING:
+
+
+ClientInformation.java
+Display values in UI using the model class.
+
+
+Quote.java
+This class will be used to receive quote request data from UI and persist to database (no database needed yet).
+
+
+QuoteViewer.java
+We will use this list to display quote history in UI.
+
+
+Submission:
+Submit your files to TRACS. 
+If there are any instructions on how to use your application then please provide a README file.
+
+*/
