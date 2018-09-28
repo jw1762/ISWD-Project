@@ -1,32 +1,19 @@
-package com.public;
+package classes;
 
 /**
  * @author Jordan Williamson & Michelle Pham
- *
- */
-
-/*
-//Deliverables:
-�	Back End (Model)
-o	Create ClientInformation model class to hold the values that you will retrieve from a database. Database is not needed at this point. You can hard code values for now. 
-?	Use these attributes. For each attribute create get and set methods.
-�	clientId (int)
-�	name (string)
-�	address (string)
-�	phone (string)
-�	email (string)
-
 Display values in UI using the model class.
-
 */
 
 //Model Structure
 public class ClientInformation {
-	int clientID;
-	String name;
-	String address;
-	String phone;
-	String email;
+	int clientID = 5;
+	String name = "John Placeholder";
+	String address ="555";
+	String phone = "555-555-5555";
+	String email = "5@555.com";
+	
+	
 	
 	//				//
 	//	getters		//

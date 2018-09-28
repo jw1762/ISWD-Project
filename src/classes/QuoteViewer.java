@@ -1,4 +1,4 @@
-package com.public;
+package classes;
 
 /**
  * @author Jordan Williamson & Michelle Pham
