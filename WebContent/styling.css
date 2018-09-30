@@ -69,6 +69,46 @@ footer {
     text-align: center;
     color: white;
 }
+/* Style for table*/
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	empty-cells: show;
+}
+
+th {
+	height: 50px;
+}
+
+/* Style for form */
+input[type=text], input[type=password], input[type=email], input[type=number] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 15px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=number]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+input[type=submit]{
+	background-color: #7371FC;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+input[type=submit]:hover{
+	opacity: 1;
+}
 
 /* Responsive layout - makes the menu and the content (inside the section) sit on top of each other instead of next to each other */
 @media (max-width: 600px) {
