@@ -6,6 +6,7 @@ package classes;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,6 +32,13 @@ public class clientServlet extends HttpServlet {
 		
 		ClientInformation test = new ClientInformation();
 		
+		//sets input from form fields
+		test.setName("John Placeholder"); //replace hard codes with request.getParameter("name") to get the input from form
+		test.setAddress("555");
+		test.setEmail("5@555.com");
+		test.setPhone("555-555-5555");
+		test.setClientID(5);
+				
 		// read form fields
 		String namestr = test.getName();
 		String addrstr = test.getAddress();
@@ -39,7 +47,13 @@ public class clientServlet extends HttpServlet {
 		int clientid = test.getClientID();
 		
         // do some processing here...
-     		
+		
+		//sets data for JSP file
+		request.getSession().setAttribute("name", namestr);	
+		request.getSession().setAttribute("addr", addrstr);	
+		request.getSession().setAttribute("email", emailstr);	
+		request.getSession().setAttribute("phone", phonestr);	
+		request.getSession().setAttribute("clientid", clientid);	
 		
 		//get writer
 			
@@ -53,7 +67,8 @@ public class clientServlet extends HttpServlet {
 		htmlR += "</html>";
 		
 		// return response
-		response.getWriter().append(htmlR).append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append(htmlR).append("Served at: ").append(request.getContextPath());
+		response.sendRedirect("clientinfo.jsp");
 	}
 
 	/**

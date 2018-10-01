@@ -7,11 +7,11 @@ Display values in UI using the model class.
 
 //Model Structure
 public class ClientInformation {
-	int clientID = 5;
-	String name = "John Placeholder";
-	String address ="555";
-	String phone = "555-555-5555";
-	String email = "5@555.com";
+	int clientID;
+	String name;
+	String address;
+	String phone;
+	String email;
 	
 	
 	
