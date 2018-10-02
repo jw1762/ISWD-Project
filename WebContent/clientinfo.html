@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <title>Assignment 2</title>
 <meta charset="utf-8">
@@ -7,10 +8,12 @@
 <link rel="stylesheet" href="styling.css">
 </head>
 
+
 <body>
 <header>
   <h2>Client Information</h2>
 </header>
+
 
 <section>
   <nav>
@@ -23,21 +26,24 @@
     </ul>
   </nav>
   
+  
 <article>
 <h1>Contact Card</h1>
 <form name="contactCard" method="post" action="clientServlet">
-		Name:<br><input type="text" name="name"><br>
-		Address:<br><input type="text" name="addr"><br>
-		Phone:<br><input type="text" name="phone"><br>
-		Email:<br><input type="text" name="email"><br>
-		<!--It was my intention to have a button you click,
-		at which point all the data is returned to their forms.
-		Currently when I run it through the HTML file, it does not work. 
-		If I run the servlet on it's own, it works fine. 
-		I think this is due to the file structure. Something might need to move.-->
-		<br><input type="submit" name="submitcc"><br>
+		<b>Name:</b>
+		<br><input type="text" placeholder="Enter Name" name="name"><br>
+		
+		<b>Address:</b>
+		<br><input type="text" placeholder="Enter Address" name="addr"><br>
+		
+		<b>Phone:</b>
+		<br><input type="text" placeholder="Enter Phone #" name="phone"><br>
+		
+		<b>Email:</b>
+		<br><input type="text" placeholder="Enter Email" name="email"><br>
+		
+		<input type="submit" name="submitcc">
 </form>
-
 </article>
 </section>
 
@@ -45,6 +51,5 @@
 <footer>
   <p>Copyright © 2018 Jordan Williamson & Michelle Pham. All rights reserved.</p>
 </footer>
-
 </body>
 </html>

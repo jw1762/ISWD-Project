@@ -54,20 +54,8 @@ public class clientServlet extends HttpServlet {
 		request.getSession().setAttribute("email", emailstr);	
 		request.getSession().setAttribute("phone", phonestr);	
 		request.getSession().setAttribute("clientid", clientid);	
-		
-		//get writer
-			
-		// build HTML code
-		String htmlR = "<html>";
-		htmlR += "Name: " + namestr + "<br>";
-		htmlR += "Phone #: " + phonestr + "<br>";
-		htmlR += "Address: " + addrstr + "<br>";
-		htmlR += "Email: " + emailstr + "<br>";
-		htmlR += "clientID: " + clientid + "<br>";		
-		htmlR += "</html>";
-		
+				
 		// return response
-		//response.getWriter().append(htmlR).append("Served at: ").append(request.getContextPath());
 		response.sendRedirect("clientinfo.jsp");
 	}
 
