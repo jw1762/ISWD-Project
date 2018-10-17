@@ -14,7 +14,7 @@
 <section>
   <nav>
     <ul>
-      <li><a href="login.html">Login/Signup</a></li>
+      <li><a href="login.html">Login/Signup</a></li> 
       <li><a href="Index.html">Home</a></li>
       <li><a class="active" href="clientinfo.html">Client Information</a></li>
       <li><a href="getquote.html">Request a Quote</a></li>
@@ -24,10 +24,10 @@
   
   <article>
     <h1>Contact Card</h1>
-    <p>Name: <%= session.getAttribute("name") %> <br><br>
-	Address: <%= session.getAttribute("addr") %> <br><br>
-	Email: <%= session.getAttribute("email") %> <br><br>
-	Phone: <%= session.getAttribute("phone") %> </p>
+    <p><b>Name:</b> <%= session.getAttribute("name") %> <br><br>
+	<b>Address:</b> <%= session.getAttribute("addr") %> <br><br>
+	<b>Email:</b> <%= session.getAttribute("email") %> <br><br>
+	<b>Phone:</b> <%= session.getAttribute("phone") %> </p>
   </article>
 </section>
 

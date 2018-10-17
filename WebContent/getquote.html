@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Assignment 2</title>
+<title>Request Quote</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="styling.css">
@@ -23,20 +23,29 @@
     </ul>
   </nav>
   
-  <article>
+ <article>
     <h1>Order Form</h1>
-    <form>
-    Gallons Requested:<br><input type="text" name="GalReq"><br>
-    Delivery Date:<br><input type="text" name="DelDate"><br>
-    Delivery Location:<br><input type="text" name="DelLoc:"><br>
-    Delivery Contact Person Name:<br><input type="text" name="DelCPN"><br>
-    Delivery Contact Person Phone:<br><input type="text" name="DelCPP:"><br>
-    Delivery Contact Person Email:<br><input type="text" name="DelCPE:"><br>
-    Suggested Price per Gallon:<br><input type="text" name="PPG"><br>
-    Total Amount Due:<br><input type="text" name="TotalDue"><br> 
-    <br><input type="submit" value="Submit">
+<form name="OrderForm" method="post" action="QuoteServlet">
+    <b>Gallons Requested:</b>
+    <br><input type="number" name="GalReq" placeholder="Enter Gallons" required><br>
+    <b>Delivery Date:</b>
+    <br><input type="date" name="DelDate" placeholder="MM/DD/YYYY" required><br>
+    <b>Delivery Location:</b>
+    <br><input type="text" name="DelLoc:" placeholder="Enter Location" required><br>
+    <b>Delivery Contact Person Name:</b>
+    <br><input type="text" name="DelCPN"  placeholder="Enter Contacts Name" required><br>
+    <b>Delivery Contact Person Phone:</b>
+    <br><input type="tel" name="DelCPP:" placeholder="Enter Contacts Phone #" required><br>
+    <b>Delivery Contact Person Email:</b>
+    <br><input type="email" name="DelCPE:" placeholder="Enter Contacts Email" required><br>
+    <b>Suggested Price per Gallon:</b>
+    <br><input type="number" name="PPG" placeholder="Suggested Price"><br>
+ 	<b>Total Amount Due:</b>
+    <br><input type="number" name="TotalDue" placeholder="Total Due: "><br> 
+    
+    <br><input type="submit" value="submitOF">
 </form> 
-  </article>
+</article>
 </section>
 
 <footer>
