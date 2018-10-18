@@ -1,18 +1,21 @@
-////I don't know how to do this beyond hardcoding, currently.
+//REMAINING TASKS:
 
-o	Submit this data to backend code that will validate, process this data and insert to DB in next assignment.
-o	Display output in console for now showing backend is functional.
-////
+// 	Date in QuoteServlet does not function. 
+// 	I do not know how to convert the Long into a proper Date object for java.
 
-////In the servlet I create a new quoteViewer and add 
-///the current quote to the list. No display from the list itself.
-•	Display QuoteHistory data using the list.
-
-////I did this with hardcodes in the java files instead.
+•	Display QuoteHistory data using the list.//The Quote object is added to the list during
+											//data processing from the request form.
 
 o	Create JSON sample data to display. We will get this data from DB in next assignment.
 o	Suggestion: Supply this JSON data to the module that will display the list to UI. Later you can replace JSON data with DB data.
 
-////
+////////////////////////////
+IMPORTANT: Submit just the code. 
+Create a word/pdf doc that shows your code and sample output. 
+These could be screenshots 
+///////(I have one screenshot of functional site/console output).
 
-IMPORTANT: Submit just the code. Create a word/pdf doc that shows your code and sample output. These could be screenshots. 
+
+SPECIAL NOTE FROM JCW: 
+If you're using eclipse, sometimes the HTML pages don't actually update properly 
+and you'll have to right click and refresh the HTML file when open in the browser.

@@ -16,9 +16,9 @@ import classes.Quote;
 //values we set for quote.java,
 //as we currently have no database of 
 //names to pull from.
-/**
-* Servlet implementation class QuoteServlet
-*/
+//
+//Servlet implementation class QuoteServlet
+//
 
 @WebServlet("/QuoteServlet")
 public class QuoteServlet extends HttpServlet 
@@ -28,14 +28,38 @@ public class QuoteServlet extends HttpServlet
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		Quote test = new Quote();
-		Date delDate;
-		String name ="Juan Placeholder", loc = "Austin, TX",
-		phone ="512 999 1234", email = "Juan@amazingEmail.edu";
-		int gals = 20;
-		double price =2.50;
-		double total = price*gals;
+		
+		//int cid = request.getParameter("clientID")
+		//The assignment says nothing about a client ID, 
+		//but it exists in the Quote object. Ignoring for now.
+	
+		//////////////////////////die in a fire//////////////////////////////////	
+//		Date date = Date.parse(request.getParameter("DelDate"));
+//		System.out.println(date);
+		////////////////////////this is the devil////////////////////////////////	
+		
+		String name = request.getParameter("DelCPN");
+		System.out.println(name);
+		
+		String loc = request.getParameter("DelLoc");
+		System.out.println(loc);
 				
-	//	test.setdeliveryDate(delDate);
+		String email = request.getParameter("DelCPE");
+		System.out.println(email);
+		
+		String phone = request.getParameter("DelCPP");
+		System.out.println(phone);
+
+		double gals = Double.parseDouble(request.getParameter("GalReq"));
+		System.out.println(gals);
+		
+		double price = 2.50;
+	//	double price = Double.parseDouble(request.getParameter("PPG"));
+		System.out.println(price);
+		
+		double total = price*gals;		
+		
+//		test.setdeliveryDate(date);
 		test.setdeliveryLocation(loc);
 		test.setgallonsRequested(gals);	
 	//	test.setClientID(clientID);
@@ -46,7 +70,7 @@ public class QuoteServlet extends HttpServlet
 		test.setTotalAmountDue(total);
 						
 		//sets data for JSP file		
-	//	request.getSession().setAttribute("DelDate", delDate);	
+	//	request.getSession().setAttribute("DelDate", date);	
 		request.getSession().setAttribute("DelLoc", loc);	
 		request.getSession().setAttribute("GalReq", gals);	
 		request.getSession().setAttribute("DelCPN", name);	
