@@ -28,14 +28,31 @@ public class QuoteServlet extends HttpServlet
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		Quote test = new Quote();
-		Date delDate;
-		String name ="Juan Placeholder", loc = "Austin, TX",
-		phone ="512 999 1234", email = "Juan@amazingEmail.edu";
-		int gals = 20;
-		double price =2.50;
-		double total = price*gals;
+		
+//		Date date = Date.parse(request.getParameter("DelDate"));//what even	
+//		System.out.println(date);
+						
+		String name = request.getParameter("DelCPN");
+		System.out.println(name);
+		
+		String loc = request.getParameter("DelLoc");//NOT WORKING
+		System.out.println(loc);
 				
-	//	test.setdeliveryDate(delDate);
+		String email = request.getParameter("DelCPE");//NOT WORKING
+		System.out.println(email);
+		
+		String phone = request.getParameter("DelCPP");//NOT WORKING
+		System.out.println(phone);
+
+		double gals = Double.parseDouble(request.getParameter("GalReq"));
+		System.out.println(gals);
+		
+		double price = Double.parseDouble(request.getParameter("PPG"));
+		System.out.println(price);
+		
+		double total = price*gals;		
+		
+//		test.setdeliveryDate(date);
 		test.setdeliveryLocation(loc);
 		test.setgallonsRequested(gals);	
 	//	test.setClientID(clientID);
@@ -46,7 +63,7 @@ public class QuoteServlet extends HttpServlet
 		test.setTotalAmountDue(total);
 						
 		//sets data for JSP file		
-	//	request.getSession().setAttribute("DelDate", delDate);	
+	//	request.getSession().setAttribute("DelDate", date);	
 		request.getSession().setAttribute("DelLoc", loc);	
 		request.getSession().setAttribute("GalReq", gals);	
 		request.getSession().setAttribute("DelCPN", name);	

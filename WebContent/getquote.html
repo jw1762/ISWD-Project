@@ -25,25 +25,24 @@
   
  <article>
     <h1>Order Form</h1>
-<form name="OrderForm" method="post" action="QuoteServlet">
+<form name="OrderForm" method="get" action="QuoteServlet">
     <b>Gallons Requested:</b>
     <br><input type="number" name="GalReq" placeholder="Enter Gallons" required><br>
     <b>Delivery Date:</b>
     <br><input type="date" name="DelDate" placeholder="MM/DD/YYYY" required><br>
     <b>Delivery Location:</b>
-    <br><input type="text" name="DelLoc:" placeholder="Enter Location" required><br>
+    <br><input type="text" name="DelLoc" placeholder="Enter Location" required><br>
     <b>Delivery Contact Person Name:</b>
     <br><input type="text" name="DelCPN"  placeholder="Enter Contacts Name" required><br>
     <b>Delivery Contact Person Phone:</b>
-    <br><input type="tel" name="DelCPP:" placeholder="Enter Contacts Phone #" required><br>
+    <br><input type="tel" name="DelCPP" placeholder="Enter Contacts Phone #" required><br>
     <b>Delivery Contact Person Email:</b>
-    <br><input type="email" name="DelCPE:" placeholder="Enter Contacts Email" required><br>
+    <br><input type="email" name="DelCPE" placeholder="Enter Contacts Email" required><br>
     <b>Suggested Price per Gallon:</b>
-    <br><input type="number" name="PPG" placeholder="Suggested Price"><br>
+    <br><input type="number" name="PPG" placeholder="Price per Gallon"><br>
  	<b>Total Amount Due:</b>
     <br><input type="number" name="TotalDue" placeholder="Total Due: "><br> 
-    
-    <br><input type="submit" value="submitOF">
+    <br><input type="submit" value="Submit Request">
 </form> 
 </article>
 </section>
