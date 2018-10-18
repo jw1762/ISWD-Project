@@ -16,9 +16,9 @@ import classes.Quote;
 //values we set for quote.java,
 //as we currently have no database of 
 //names to pull from.
-/**
-* Servlet implementation class QuoteServlet
-*/
+//
+//Servlet implementation class QuoteServlet
+//
 
 @WebServlet("/QuoteServlet")
 public class QuoteServlet extends HttpServlet 
@@ -29,25 +29,32 @@ public class QuoteServlet extends HttpServlet
 	{
 		Quote test = new Quote();
 		
-//		Date date = Date.parse(request.getParameter("DelDate"));//what even	
+		//int cid = request.getParameter("clientID")
+		//The assignment says nothing about a client ID, 
+		//but it exists in the Quote object. Ignoring for now.
+	
+		//////////////////////////die in a fire//////////////////////////////////	
+//		Date date = Date.parse(request.getParameter("DelDate"));
 //		System.out.println(date);
-						
+		////////////////////////this is the devil////////////////////////////////	
+		
 		String name = request.getParameter("DelCPN");
 		System.out.println(name);
 		
-		String loc = request.getParameter("DelLoc");//NOT WORKING
+		String loc = request.getParameter("DelLoc");
 		System.out.println(loc);
 				
-		String email = request.getParameter("DelCPE");//NOT WORKING
+		String email = request.getParameter("DelCPE");
 		System.out.println(email);
 		
-		String phone = request.getParameter("DelCPP");//NOT WORKING
+		String phone = request.getParameter("DelCPP");
 		System.out.println(phone);
 
 		double gals = Double.parseDouble(request.getParameter("GalReq"));
 		System.out.println(gals);
 		
-		double price = Double.parseDouble(request.getParameter("PPG"));
+		double price = 2.50;
+	//	double price = Double.parseDouble(request.getParameter("PPG"));
 		System.out.println(price);
 		
 		double total = price*gals;		
