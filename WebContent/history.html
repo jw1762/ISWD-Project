@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="styling.css">
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -17,7 +18,7 @@
 <section>
   <nav>
     <ul>
- 	  <li><a href="login.html">Login/Signup</a></li>
+ 	<!--   <li><a href="login.html">Login/Signup</a></li>  -->
       <li><a href="Index.html">Home</a></li>
       <li><a href="clientinfo.html">Client Information</a></li>
       <li><a href="getquote.html">Request a Quote</a></li>
@@ -27,34 +28,41 @@
   
   <article>
     <h1>Quote History</h1>
-		<table id="qoutehistory"">
+		<table id="quotehistory">
 			<th>Item #</th>
-			<th>Request Date</th>
+			<th>Name</th>
+			<th>Location</th>
 			<th>Delivery Date</th>
 			<th>Gallons</th>
 			<th>Rate</th>
 			<th>Total Price</th>  
 		</table>
-	    <script>    
-			$(document).ready(function(){   
-				myObjects = [];
-				/* uploaded sampleData.json to http://myjson.com */
-				$.getJSON('https://api.myjson.com/bins/za2v4', function(data) { 
-				myObjects = Object.values(data);
-				console.log("Objects in array " + myObjects.length);
-					$.each(myObjects, function(i, person) {
-						var $row = $('<tr>'+
-						'<td>'+person.item+'</td>'+
-						'<td>'+person.requestDate+'</td>'+
-						'<td>'+person.deliveryDate+'</td>'+
-						'<td>'+person.gallons+'</td>'+
-						'<td>'+person.rate+'</td>'+
-						'<td>'+person.totalPrice+'</td>'+'</tr>');     
-							
-						$('table> tbody:last').append($row);
-						}); 
-					}); 
+	    <script>
+	    
+	    $(document).ready(function()
+		{	  
+			$.getJSON("history.json", function(data) 
+			{ 
+				var uid = 0;
+				var qData = '';
+				$.each(data, function(key, value)
+				{
+					qData += '<tr>';
+					qData += '<td>'+uid+'</td>';
+					qData += '<td>'+value.name+'</td>';
+					qData += '<td>'+value.loc+'</td>';
+					qData += '<td>'+value.delDate+'</td>';
+					qData += '<td>'+value.galReq+'</td>';
+					qData += '<td>'+value.rate+'</td>';
+					qData += '<td>'+value.total+'</td>';
+					qData += '</tr>';
+					uid++;
 				});
+				
+				$('#quotehistory').append(qData);
+			}); 
+	    	
+		}); 
 	    </script>
   </article>
 </section>

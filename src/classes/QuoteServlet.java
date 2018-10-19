@@ -3,6 +3,9 @@
 */
 package classes;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,7 +37,7 @@ public class QuoteServlet extends HttpServlet
 		//but it exists in the Quote object. Ignoring for now.
 	
 		//////////////////////////die in a fire//////////////////////////////////	
-//		Date date = Date.parse(request.getParameter("DelDate"));
+//		Long date = Long.parseLong(request.getParameter("DelDate"));
 //		System.out.println(date);
 		////////////////////////this is the devil////////////////////////////////	
 		
@@ -59,10 +62,10 @@ public class QuoteServlet extends HttpServlet
 		
 		double total = price*gals;		
 		
+	//	test.setClientID(clientID);
 //		test.setdeliveryDate(date);
 		test.setdeliveryLocation(loc);
 		test.setgallonsRequested(gals);	
-	//	test.setClientID(clientID);
 		test.setdeliveryContactEmail(email);
 		test.setdeliveryContactName(name);
 		test.setdeliveryContactPhone(phone);
@@ -78,6 +81,27 @@ public class QuoteServlet extends HttpServlet
 		request.getSession().setAttribute("DelCPP", phone);	
 		request.getSession().setAttribute("PPG", price);	
 		request.getSession().setAttribute("TotalDue", total);	
+		
+		///////////////Will not write to disk. Otherwise should work.////////////////////
+	/*	String fileContent = "{";
+				fileContent += " \"rate\":\"";
+				fileContent += price + "\",";
+				fileContent += " \"galReq\":\"";
+				fileContent += gals + "\",";
+				fileContent += " \"total\":\"";
+				fileContent += total + "\",";
+				fileContent += "\"loc\":\"";
+				fileContent += loc + "\",";
+				fileContent += "\"name\":\"";
+				fileContent += name +"\",";
+				fileContent += "\"delDate\":\"10/10/2010" + "\"";
+				fileContent += "},\n";
+
+	    BufferedWriter writer = new BufferedWriter(new FileWriter("history.json"));
+	    writer.write(fileContent);
+		System.out.println(fileContent);
+	    writer.close();		*/
+		///////////////////////////////////////////////////////////////////////////
 				
 		//Add the new quote object to the 
 		//list arraylist of quotes.
