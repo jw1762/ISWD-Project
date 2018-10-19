@@ -1,0 +1,26 @@
+[
+	{
+		"item": "1",
+		"requestDate": "9/15/18",
+		"deliveryDate": "9/18/18",
+		"gallons": "20",
+		"rate": "10",
+		"totalPrice": "$50"
+	},
+	{
+		"item": "2",
+		"requestDate": "10/15/18",
+		"deliveryDate": "10/18/18",
+		"gallons": "10",
+		"rate": "5",
+		"totalPrice": "$30"
+	},
+	{
+		"item": "3",
+		"requestDate": "11/15/18",
+		"deliveryDate": "11/18/18",
+		"gallons": "30",
+		"rate": "15",
+		"totalPrice": "$70"
+	}
+]
