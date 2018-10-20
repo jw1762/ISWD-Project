@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.Date;
+import java.util.Locale;
+import java.text.SimpleDateFormat; 
+import java.text.ParseException;
 import classes.Quote;
 
 //This portion is currently hardcoded to return the
@@ -32,10 +35,17 @@ public class QuoteServlet extends HttpServlet
 		//int cid = request.getParameter("clientID")
 		//The assignment says nothing about a client ID, 
 		//but it exists in the Quote object. Ignoring for now.
-	
+		
 		//////////////////////////die in a fire//////////////////////////////////	
 //		Date date = Date.parse(request.getParameter("DelDate"));
 //		System.out.println(date);
+		try {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+	    //Date date = dateFormat.parse(request.getParameter("DelDate")); //Date convert error
+		
+		//Converts java.util.Date to java.sql.Date format
+		java.util.Date utilDate = dateFormat.parse(request.getParameter("DelDate"));
+		java.sql.Date date = new java.sql.Date(utilDate.getTime());
 		////////////////////////this is the devil////////////////////////////////	
 		
 		String name = request.getParameter("DelCPN");
@@ -59,7 +69,7 @@ public class QuoteServlet extends HttpServlet
 		
 		double total = price*gals;		
 		
-//		test.setdeliveryDate(date);
+		test.setdeliveryDate(date);
 		test.setdeliveryLocation(loc);
 		test.setgallonsRequested(gals);	
 	//	test.setClientID(clientID);
@@ -70,7 +80,7 @@ public class QuoteServlet extends HttpServlet
 		test.setTotalAmountDue(total);
 						
 		//sets data for JSP file		
-	//	request.getSession().setAttribute("DelDate", date);	
+		request.getSession().setAttribute("DelDate", date);	
 		request.getSession().setAttribute("DelLoc", loc);	
 		request.getSession().setAttribute("GalReq", gals);	
 		request.getSession().setAttribute("DelCPN", name);	
@@ -86,6 +96,9 @@ public class QuoteServlet extends HttpServlet
 		
 		// return response
 		response.sendRedirect("returnquote.jsp");
+		}catch (ParseException e) {
+	        e.printStackTrace();
+	    } 
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
