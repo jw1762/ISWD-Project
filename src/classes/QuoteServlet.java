@@ -39,17 +39,13 @@ public class QuoteServlet extends HttpServlet
 		//The assignment says nothing about a client ID, 
 		//but it exists in the Quote object. Ignoring for now.
 		
-		//////////////////////////die in a fire//////////////////////////////////	
-//		Long date = Long.parseLong(request.getParameter("DelDate"));
-//		System.out.println(date);
 		try {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 	    //Date date = dateFormat.parse(request.getParameter("DelDate")); //Date convert error
-		
 		//Converts java.util.Date to java.sql.Date format
 		java.util.Date utilDate = dateFormat.parse(request.getParameter("DelDate"));
 		java.sql.Date date = new java.sql.Date(utilDate.getTime());
-		////////////////////////this is the devil////////////////////////////////	
+		System.out.println(date);
 		
 		String name = request.getParameter("DelCPN");
 		System.out.println(name);
@@ -72,12 +68,8 @@ public class QuoteServlet extends HttpServlet
 		
 		double total = price*gals;		
 		
-<<<<<<< HEAD
 	//	test.setClientID(clientID);
-//		test.setdeliveryDate(date);
-=======
 		test.setdeliveryDate(date);
->>>>>>> origin/master
 		test.setdeliveryLocation(loc);
 		test.setgallonsRequested(gals);	
 		test.setdeliveryContactEmail(email);
@@ -110,7 +102,6 @@ public class QuoteServlet extends HttpServlet
 				fileContent += name +"\",";
 				fileContent += "\"delDate\":\"10/10/2010" + "\"";
 				fileContent += "},\n";
-
 	    BufferedWriter writer = new BufferedWriter(new FileWriter("history.json"));
 	    writer.write(fileContent);
 		System.out.println(fileContent);
