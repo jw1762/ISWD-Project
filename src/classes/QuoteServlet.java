@@ -9,8 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.Date;
 import classes.Quote;
+import java.sql.*;
+import com.mysql.*;
 
 //This portion is currently hardcoded to return the
 //values we set for quote.java,
@@ -26,18 +27,9 @@ public class QuoteServlet extends HttpServlet
 	private static final long serialVersionUID = 5298036022257976608L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-	{
+	{		
 		Quote test = new Quote();
-		
-		//int cid = request.getParameter("clientID")
-		//The assignment says nothing about a client ID, 
-		//but it exists in the Quote object. Ignoring for now.
-	
-		//////////////////////////die in a fire//////////////////////////////////	
-//		Date date = Date.parse(request.getParameter("DelDate"));
-//		System.out.println(date);
-		////////////////////////this is the devil////////////////////////////////	
-		
+			
 		String name = request.getParameter("DelCPN");
 		System.out.println(name);
 		
@@ -54,7 +46,6 @@ public class QuoteServlet extends HttpServlet
 		System.out.println(gals);
 		
 		double price = 2.50;
-	//	double price = Double.parseDouble(request.getParameter("PPG"));
 		System.out.println(price);
 		
 		double total = price*gals;		
@@ -79,6 +70,37 @@ public class QuoteServlet extends HttpServlet
 		request.getSession().setAttribute("PPG", price);	
 		request.getSession().setAttribute("TotalDue", total);	
 				
+	//JDBC Implementation for QuoteServlet Response
+	//
+		String testDB = "jdbc:mysql://localhost:3306/cs3320";
+		String psw = "123";
+		String clientID = "1";//Note that at some point cID will be generated/used from elsewhere, likely for Assignment 5.
+	
+		Class.forName("com.mysql.cj.jdbc.Driver");//ClassNotFoundE. Classpath error.	
+		//Driver testDriver = new Driver();//Same Classpath error should be causing this as well.
+		
+		try {
+	//		DriverManager.registerDriver();//Cant use this until classpath bug is fixed
+			
+			Connection testCon = DriverManager.getConnection(testDB, clientID, psw);
+			
+			Statement testState = testCon.createStatement();
+			
+			ResultSet testResult = testState.executeQuery("select * from fuelquote");
+			
+			while (testResult.next())
+			{
+				//reading data from each row while rows exist.
+				System.out.print(testResult.getString("deliveryContactName"));
+				System.out.print(testResult.getString("deliveryAddress"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+	//
+	//
+		
 		//Add the new quote object to the 
 		//list arraylist of quotes.
 		QuoteViewer qv = new QuoteViewer();
