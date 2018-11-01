@@ -73,14 +73,18 @@ public class QuoteServlet extends HttpServlet
 	//JDBC Implementation for QuoteServlet Response
 	//
 		String testDB = "jdbc:mysql://localhost:3306/cs3320";
-		String psw = "123";
-		String clientID = "1";//Note that at some point cID will be generated/used from elsewhere, likely for Assignment 5.
-	
-		Class.forName("com.mysql.cj.jdbc.Driver");//ClassNotFoundE. Classpath error.	
+		String psw = "your_password";
+		String clientID = "root";//Note that at some point cID will be generated/used from elsewhere, likely for Assignment 5.
+		String driver = "com.mysql.cj.jdbc.Driver";
 		//Driver testDriver = new Driver();//Same Classpath error should be causing this as well.
-		
 		try {
-	//		DriverManager.registerDriver();//Cant use this until classpath bug is fixed
+			try {
+				Class.forName(driver);
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}			
+		//	DriverManager.registerDriver(new Driver());//Cant use this until classpath bug is fixed
 			
 			Connection testCon = DriverManager.getConnection(testDB, clientID, psw);
 			
