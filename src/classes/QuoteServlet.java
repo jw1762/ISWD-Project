@@ -12,11 +12,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+<<<<<<< HEAD
 import java.sql.Date;
 import java.util.Locale;
 import java.text.SimpleDateFormat; 
 import java.text.ParseException;
+=======
+>>>>>>> refs/remotes/origin/jcwBranch
 import classes.Quote;
+import java.sql.*;
+import com.mysql.*;
 
 //This portion is currently hardcoded to return the
 //values we set for quote.java,
@@ -32,8 +37,9 @@ public class QuoteServlet extends HttpServlet
 	private static final long serialVersionUID = 5298036022257976608L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-	{
+	{		
 		Quote test = new Quote();
+<<<<<<< HEAD
 		
 		//int cid = request.getParameter("clientID")
 		//The assignment says nothing about a client ID, 
@@ -47,6 +53,9 @@ public class QuoteServlet extends HttpServlet
 		java.sql.Date date = new java.sql.Date(utilDate.getTime());
 		System.out.println(date);
 		
+=======
+			
+>>>>>>> refs/remotes/origin/jcwBranch
 		String name = request.getParameter("DelCPN");
 		System.out.println(name);
 		
@@ -63,7 +72,6 @@ public class QuoteServlet extends HttpServlet
 		System.out.println(gals);
 		
 		double price = 2.50;
-	//	double price = Double.parseDouble(request.getParameter("PPG"));
 		System.out.println(price);
 		
 		double total = price*gals;		
@@ -78,8 +86,13 @@ public class QuoteServlet extends HttpServlet
 		test.setsuggestedPrice(price);
 		test.setTotalAmountDue(total);
 						
+<<<<<<< HEAD
 		//sets data for JSP file		
 		request.getSession().setAttribute("DelDate", date);	
+=======
+	//sets data for JSP file		
+	//	request.getSession().setAttribute("DelDate", date);	
+>>>>>>> refs/remotes/origin/jcwBranch
 		request.getSession().setAttribute("DelLoc", loc);	
 		request.getSession().setAttribute("GalReq", gals);	
 		request.getSession().setAttribute("DelCPN", name);	
@@ -87,6 +100,7 @@ public class QuoteServlet extends HttpServlet
 		request.getSession().setAttribute("DelCPP", phone);	
 		request.getSession().setAttribute("PPG", price);	
 		request.getSession().setAttribute("TotalDue", total);	
+<<<<<<< HEAD
 		
 		///////////////Will not write to disk. Otherwise should work.////////////////////
 	/*	String fileContent = "{";
@@ -108,6 +122,14 @@ public class QuoteServlet extends HttpServlet
 	    writer.close();		*/
 		///////////////////////////////////////////////////////////////////////////
 				
+=======
+			
+	//Calls new DatabaseCon class, containing functions for various DB actions.
+		DatabaseCon querydb = new DatabaseCon();
+		querydb.getQuoteHistory();
+	//
+		
+>>>>>>> refs/remotes/origin/jcwBranch
 		//Add the new quote object to the 
 		//list arraylist of quotes.
 		QuoteViewer qv = new QuoteViewer();
