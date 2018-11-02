@@ -44,7 +44,6 @@ public class DatabaseCon {
 				results += testResult.getString("deliveryContactPhone")+" ";
 				results += testResult.getString("deliveryContactEmail")+" ";
 				results += testResult.getString("suggestedPrice")+" ";
-				results += testResult.getString("quoteId")+" ";
 				results += testResult.getString("totalAmountDue")+" ";
 				System.out.print(results + " ");
 			}
