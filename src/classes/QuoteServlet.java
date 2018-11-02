@@ -60,7 +60,7 @@ public class QuoteServlet extends HttpServlet
 		test.setsuggestedPrice(price);
 		test.setTotalAmountDue(total);
 						
-		//sets data for JSP file		
+	//sets data for JSP file		
 	//	request.getSession().setAttribute("DelDate", date);	
 		request.getSession().setAttribute("DelLoc", loc);	
 		request.getSession().setAttribute("GalReq", gals);	
@@ -69,40 +69,10 @@ public class QuoteServlet extends HttpServlet
 		request.getSession().setAttribute("DelCPP", phone);	
 		request.getSession().setAttribute("PPG", price);	
 		request.getSession().setAttribute("TotalDue", total);	
-				
-	//JDBC Implementation for QuoteServlet Response
-	//
-		String testDB = "jdbc:mysql://localhost:3306/cs3320";
-		String psw = "your_password";
-		String clientID = "root";//Note that at some point cID will be generated/used from elsewhere, likely for Assignment 5.
-		String driver = "com.mysql.cj.jdbc.Driver";
-		//Driver testDriver = new Driver();//Same Classpath error should be causing this as well.
-		try {
-			try {
-				Class.forName(driver);
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}			
-		//	DriverManager.registerDriver(new Driver());//Cant use this until classpath bug is fixed
 			
-			Connection testCon = DriverManager.getConnection(testDB, clientID, psw);
-			
-			Statement testState = testCon.createStatement();
-			
-			ResultSet testResult = testState.executeQuery("select * from fuelquote");
-			
-			while (testResult.next())
-			{
-				//reading data from each row while rows exist.
-				System.out.print(testResult.getString("deliveryContactName"));
-				System.out.print(testResult.getString("deliveryAddress"));
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
-	//
+	//Calls new DatabaseCon class, containing functions for various DB actions.
+		DatabaseCon querydb = new DatabaseCon();
+		querydb.getQuoteHistory();
 	//
 		
 		//Add the new quote object to the 
