@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
@@ -37,30 +38,29 @@ public class QuoteServlet extends HttpServlet
 	//		java.util.Date utilDate = dateFormat.parse(request.getParameter("DelDate"));
 	//		java.sql.Date date = new java.sql.Date(utilDate.getTime());
 	//		System.out.println(date);
-			
+		
+		String cid = request.getParameter("cid");
 		String name = request.getParameter("DelCPN");
-		System.out.println(name);
-		
-		String loc = request.getParameter("DelLoc");
-		System.out.println(loc);
-				
 		String email = request.getParameter("DelCPE");
-		System.out.println(email);
-		
 		String phone = request.getParameter("DelCPP");
-		System.out.println(phone);
+		String adr = request.getParameter("DelAdr");
+		String state = request.getParameter("DelState");
+		String city = request.getParameter("DelCity");
+		String zip = request.getParameter("DelZip");
 
 		double gals = Double.parseDouble(request.getParameter("GalReq"));
 		System.out.println(gals);
-		
 		double price = 2.50;
 		System.out.println(price);
-		
 		double total = price*gals;		
 		
-	//	test.setClientID(clientID);
+		int intCID = Integer.parseInt(cid);
+		test.setClientID(intCID);
 	//	test.setdeliveryDate(date);
-		test.setdeliveryLocation(loc);
+		test.setdeliveryAdr(adr);
+		test.setdeliveryCity(city);
+		test.setdeliveryState(state);
+		test.setdeliveryZip(zip);		
 		test.setgallonsRequested(gals);	
 		test.setdeliveryContactEmail(email);
 		test.setdeliveryContactName(name);
@@ -70,43 +70,28 @@ public class QuoteServlet extends HttpServlet
 
 	//sets data for JSP file		
 	//	request.getSession().setAttribute("DelDate", date);	
-		request.getSession().setAttribute("DelLoc", loc);	
+		request.getSession().setAttribute("cid", cid);
+		request.getSession().setAttribute("DelAdr", adr);	
+		request.getSession().setAttribute("DelState", state);	
+		request.getSession().setAttribute("DelCity", city);	
+		request.getSession().setAttribute("DelZip", zip);	
 		request.getSession().setAttribute("GalReq", gals);	
 		request.getSession().setAttribute("DelCPN", name);	
 		request.getSession().setAttribute("DelCPE", email);	
 		request.getSession().setAttribute("DelCPP", phone);	
 		request.getSession().setAttribute("PPG", price);	
 		request.getSession().setAttribute("TotalDue", total);	
-		
-		///////////////Will not write to disk. Otherwise should work.////////////////////
-	/*	String fileContent = "{";
-				fileContent += " \"rate\":\"";
-				fileContent += price + "\",";
-				fileContent += " \"galReq\":\"";
-				fileContent += gals + "\",";
-				fileContent += " \"total\":\"";
-				fileContent += total + "\",";
-				fileContent += "\"loc\":\"";
-				fileContent += loc + "\",";
-				fileContent += "\"name\":\"";
-				fileContent += name +"\",";
-				fileContent += "\"delDate\":\"10/10/2010" + "\"";
-				fileContent += "},\n";
-	    BufferedWriter writer = new BufferedWriter(new FileWriter("history.json"));
-	    writer.write(fileContent);
-		System.out.println(fileContent);
-	    writer.close();		*/
-		///////////////////////////////////////////////////////////////////////////
 				
 	//Calls new DatabaseCon class, containing functions for various DB actions.
 		DatabaseCon querydb = new DatabaseCon();
-		querydb.getQuoteHistory();
-	//
-		//Add the new quote object to the 
-		//list arraylist of quotes.
-		QuoteViewer qv = new QuoteViewer();
-		qv.QuoteHistory.add(test);
+	//Send new Quote Object to the SQL database as an SQL entry.
+		try {
+			querydb.sendQuoteToSQL(test);//Sends quote object to DatabaseCon function 
+										//which translates into SQL execution.
+		} catch (SQLException e) {e.printStackTrace();}
+	///////////////////////////////////////////////////////////
 		
+			
 		// return response
 		response.sendRedirect("returnquote.jsp");
 	}	

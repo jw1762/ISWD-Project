@@ -12,8 +12,8 @@ public class ClientInformation {
 	String address;
 	String phone;
 	String email;
-	
-	
+	String city, state;
+	int zip;
 	
 	//				//
 	//	getters		//
@@ -29,6 +29,9 @@ public class ClientInformation {
 	public String getAddress() {return address;}
 	/**	 * @return the phone	 */
 	public String getPhone() {return phone;}
+	public String getCity() {return city;}
+	public String getState() {return state;}
+	public int getZip() {return zip; }
 	
 	//				//
 	//	setters		//
@@ -44,5 +47,8 @@ public class ClientInformation {
 	public void setAddress(String address) {this.address = address;}
 	/**	 * @param email the email to set * 	 */		
 	public void setEmail(String email) {this.email = email;}
+	public void setCity(String city) {this.city = city;};
+	public void setState(String state) {this.state = state;};
+	public void setZip(int zip ) {this.zip = zip;}
 	
 }

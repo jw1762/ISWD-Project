@@ -21,7 +21,8 @@ public class Quote {
 	double gallonsRequested;
 	Date deliveryDate;
 	Date requestDate;
-	String deliveryLocation;
+	String deliveryZip;
+	String deliveryAdr, deliveryState, deliveryCity;
 	String deliveryContactName;
 	String deliveryContactPhone;
 	String deliveryContactEmail;
@@ -43,7 +44,13 @@ public class Quote {
 	//@return the del contactName
 	public String getdeliveryContactName() {return deliveryContactName;}
 	//@return the deliveryLocation
-	public String getdeliveryLocation() {return deliveryLocation;}
+	public String getdeliveryZip() {return deliveryZip;}
+	
+	public String getdeliveryAdr() {return deliveryAdr;}
+	
+	public String getdeliveryState() {return deliveryState;}
+	
+	public String getdeliveryCity() {return deliveryCity;}
 	//@return the delContactPhone
 	public String getdeliveryContactPhone() {return deliveryContactPhone;}
 	//@return the delContactEmail
@@ -66,8 +73,14 @@ public class Quote {
 	
 	public void setrequestDate(Date requestDate) {this.requestDate = requestDate;}
 	
-	public void setdeliveryLocation(String deliveryLoc) {this.deliveryLocation = deliveryLoc;}
+	public void setdeliveryZip(String deliveryZip) {this.deliveryZip = deliveryZip;}
 	
+	public void setdeliveryAdr(String deliveryAdr) {this.deliveryAdr = deliveryAdr;}
+	
+	public void setdeliveryState(String deliveryState) {this.deliveryState = deliveryState;}
+	
+	public void setdeliveryCity(String deliveryCity) {this.deliveryCity = deliveryCity;}
+
 	public void setdeliveryContactName(String delContactName) {this.deliveryContactName = delContactName;}
 	
 	public void setdeliveryContactPhone(String delContactPhone) {this.deliveryContactPhone = delContactPhone;}

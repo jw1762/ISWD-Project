@@ -28,19 +28,22 @@
   
   
 <article>
-<h1>Contact Card</h1>
+<h1>Enter NEW Client Information Here</h1>
 <form name="contactCard" method="post" action="clientServlet">
 		<b>Name:</b>
-		<br><input type="text" placeholder="Enter Name" name="name"><br>
-		
+		<br><input type="text" placeholder="Enter Name" name="name" required><br>
 		<b>Address:</b>
-		<br><input type="text" placeholder="Enter Address" name="addr"><br>
-		
+		<br><input type="text" placeholder="Address" name="adr" required><br>
+		<b>City:</b>
+		<br><input type="text" placeholder="City" name="city" required><br>
+		<b>State:</b>
+		<br><input type="text" placeholder="ST" name="state" required><br>
+		<b>Zip:</b>
+		<br><input type="number" placeholder="Zipcode" name="zip" required><br>
 		<b>Phone:</b>
-		<br><input type="text" placeholder="Enter Phone #" name="phone"><br>
-		
+		<br><input type="text" placeholder="Enter Phone #" name="phone" required><br>
 		<b>Email:</b>
-		<br><input type="text" placeholder="Enter Email" name="email"><br>
+		<br><input type="email" placeholder="Enter Email" name="email" required><br>
 		
 		<input type="submit" name="submitcc">
 </form>

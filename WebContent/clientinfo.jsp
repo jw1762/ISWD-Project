@@ -23,9 +23,9 @@
   </nav>
   
   <article>
-    <h1>Contact Card</h1>
+    <h1>ClientID: <%= session.getAttribute("cid") %></h1>
     <p><b>Name:</b> <%= session.getAttribute("name") %> <br><br>
-	<b>Address:</b> <%= session.getAttribute("addr") %> <br><br>
+	<b>Address:</b> <%= session.getAttribute("adr") %> <br><br>
 	<b>Email:</b> <%= session.getAttribute("email") %> <br><br>
 	<b>Phone:</b> <%= session.getAttribute("phone") %> </p>
   </article>
