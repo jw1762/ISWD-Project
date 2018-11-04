@@ -2,25 +2,26 @@
 •	Insert some test data to these tables using insert statements, see example.
 //DONE
 •	Complete the code to make database connection from your application.
-//DONE
-•	Create few quotes using Quotes page. 
-//DONE
-Then display quote history.
-We should be able to see all quotes under history.
 
-
-//MOSTLY done.
-//Still need to add some functionality for Client Info, depending on if he wants
-//ALL clients, or just a selected one.
+//PARTIALLY done.
+//Additional Functions are required in CLASS DatabaseCon to facilitate this further.
+//Currently 3 functions have been implemented in order to input data into DB, and one to retrieve clientID.
+//Another NON-COMPLETED function exists for retrieving entirety of quotes and/or ClientInfo.
+//In order to push to UI, refer to the ClientInfo.JSP for example: the clientID is retrieved from the database once it has been inserted.
 •	Retrieve data from database and display client information and quote history.
 
 
 //MOSTLY done.
-//Cannot update existing information, but you CAN create new DB entries.
-//A new function implementation will be required in DataBaseCon for this.
-•You should be able to update client information if data exists. 
-If data doesn’t exist then create new record in database when user clicks save.
+//Can create new clientInfo, currently will always be a new client regardless of info. 
+//ClientID is returned to the client JSP for use on Request Quote page later.
+//Cannot currently update information about clients from this page. Last portion of this remaining.
+•	You should be able to update client information if data exists. If data doesn’t exist then create new record in database when user clicks save.
 
 
+//DONE
+•	Create few quotes using Quotes page. 
+//NOT DONE
+Then display quote history.
+We should be able to see all quotes under history.
 //NOT DONE
 •	NOTE: Suggested Price will be coming from a different module that you will develop during project. For this assignment, make it user entry.
