@@ -13,7 +13,7 @@ public class DatabaseCon {
 	String psw = "your_password";
 	String clientID = "root";//Note that at some point cID will be generated/used from elsewhere, likely for Assignment 5?
 	String driver = "com.mysql.cj.jdbc.Driver";
-		
+	
 	public void sendClientSQL(ClientInformation newCI) throws SQLException 
 	{
 		try {
@@ -81,8 +81,11 @@ public class DatabaseCon {
 		System.out.print(SQLResult);
 	}
 	
-	public void getQuoteHistory() 
+	public QuoteViewer getQuoteHistory() 
 	{
+		QuoteViewer qv = new QuoteViewer();
+		String galReq, reqD, delD, delAdr, delZIP, 
+		delST, delName, delPhone, delEmail, sugPrice, TAD = "";
 		
 	//JDBC Implementation
 	//Connects to database, returns info.
@@ -98,15 +101,13 @@ public class DatabaseCon {
 			Connection testCon = DriverManager.getConnection(testDB, clientID, psw);
 			Statement testState = testCon.createStatement();
 			ResultSet testResult = testState.executeQuery("select * from fuelquote");
-			
-			String results, quoteID, clientID, galReq, reqD, delD, delAdr, delZIP, 
-			delST, delName, delPhone, delEmail, sugPrice, TAD="";
-			
+						
 			while (testResult.next())
-			{
+			{	//Create a new quote object EVERY time
+				Quote quote = new Quote();
+				
 				//reading data from each row while rows exist.
-				quoteID = testResult.getString("quoteId");
-				clientID = testResult.getString("clientId");
+	
 				galReq = testResult.getString("gallonsRequested");
 				reqD = testResult.getString("requestDate");
 				delD = testResult.getString("deliveryDate");
@@ -117,13 +118,46 @@ public class DatabaseCon {
 				delPhone = testResult.getString("deliveryContactPhone");
 				delEmail = testResult.getString("deliveryContactEmail");
 				sugPrice = testResult.getString("suggestedPrice");
-				TAD = testResult.getString("totalAmountDue");			
+				TAD = testResult.getString("totalAmountDue");	
+				//set all quote obj data to above strings.
+				
+				int intQID = Integer.parseInt(testResult.getString("quoteId"));
+				int intcid = Integer.parseInt(testResult.getString("clientId"));
+				double dblGals = Double.parseDouble(galReq); 
+				double dblSugP = Double.parseDouble(sugPrice);
+				double dblTAD = Double.parseDouble(TAD);
+				
+				quote.setgallonsRequested(dblGals);
+				quote.setsuggestedPrice(dblSugP);
+				quote.setTotalAmountDue(dblTAD);
+				
+				quote.setdeliveryAdr(delAdr);
+				quote.setdeliveryState(delST);
+				quote.setdeliveryZip(delZIP);
+				
+				quote.setQuoteID(intQID); 
+				quote.setClientID(intcid);
+				quote.setdeliveryContactEmail(delEmail);
+				quote.setdeliveryContactName(delName);
+				quote.setdeliveryContactPhone(delPhone);
+				
+		//		Date delDate = Date.parse(delD);
+		//		Date reqDate = Date.parse(reqD);
+		//		quote.setdeliveryDate(delDate);
+		//		quote.setrequestDate(reqDate);
+				
+		//add new quote obj to list of quotes
+		//this should be a new quote for every row
+				qv.QuoteHistory.add(quote);
+		//repeat
 			}
 			} 
 		catch (SQLException e) 
 		{
 			e.printStackTrace();
 		}
+	//return the list of quotes!
+		return qv;
 	}
 	
 	public int getClientID(String name) 

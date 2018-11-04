@@ -1,5 +1,4 @@
 package classes;
-
 /**
  * @author Jordan Williamson & Michelle Pham
  *
@@ -7,17 +6,10 @@ package classes;
 
 import java.sql.Date;
 
-/*
-?	This class will be used to receive quote request data from UI and persist to database.
-
-o	Create a Class that will have QuoteHistory parameter as a list of Quote.
-?	E.g. List <Quote> QuoteHistory = new ArrayList<Quote>();
-
-*/
-
-
 public class Quote {
+	
 	int clientID;
+	int quoteID;
 	double gallonsRequested;
 	Date deliveryDate;
 	Date requestDate;
@@ -60,10 +52,13 @@ public class Quote {
 	//@return totalAmountDue.
 	public double getTotalAmountDue() {return totalAmountDue;}
 	
+	public int getQuoteID() {return quoteID;}
+	
 	
 	//				//
 	//	setters		//
 	//				//
+	public void setQuoteID(int quoteID) {this.quoteID = quoteID;}
 	
 	public void setClientID(int clientID) {this.clientID = clientID;}
 	
