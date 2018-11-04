@@ -35,12 +35,9 @@ public class DatabaseCon {
 		String state = newCI.getState();
 		int zip = newCI.getZip();
 		
-		
 		String statement = "INSERT INTO clientInformation (fullName, address, city, state, zipCode, phone, email) "
 				+ "VALUES ('" + name + "', '" + adr + "', '" + city + "', '" + state + "', " + zip +", '"+ phone +"', '"+ email + "');";
-		System.out.println(statement);
 		long SQLResult = SQLState.executeLargeUpdate(statement);
-		System.out.println(SQLResult);
 	}
 	
 	public void sendQuoteToSQL(Quote quote) throws SQLException

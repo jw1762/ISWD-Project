@@ -4,7 +4,6 @@ package classes;
  * @author Jordan Williamson & Michelle Pham
 Display values in UI using the model class.
 */
-
 //Model Structure
 public class ClientInformation {
 	int clientID;

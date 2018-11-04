@@ -21,7 +21,6 @@ import java.util.Locale;
 //
 //Servlet implementation class QuoteServlet
 //
-
 @WebServlet("/QuoteServlet")
 public class QuoteServlet extends HttpServlet 
 {

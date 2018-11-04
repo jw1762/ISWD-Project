@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 //
 //Servlet implementation class GetHistoryServlet
 //
-
 @WebServlet("/GetHistoryServlet")
 public class GetHistoryServlet extends HttpServlet 
 {
@@ -32,5 +31,4 @@ public class GetHistoryServlet extends HttpServlet
 	{		
 		doGet(request, response);
 	}
-	
 }

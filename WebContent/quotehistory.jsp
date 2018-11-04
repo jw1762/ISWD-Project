@@ -23,7 +23,6 @@
       <li><a class="active" href="history.html">Quote History</a></li>
     </ul>
   </nav>
-  
   <article>
     <h1>Quote History</h1>
     <table>

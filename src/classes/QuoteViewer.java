@@ -13,5 +13,4 @@ import java.util.List;
 public class QuoteViewer {
 	
 	List <Quote>QuoteHistory = new ArrayList<Quote>();
-
 }

@@ -12,7 +12,6 @@
 <header>
   <h2>Quote History</h2>
 </header>
-
 <section>
   <nav>
     <ul>

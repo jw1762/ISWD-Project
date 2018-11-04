@@ -61,7 +61,6 @@ public class clientServlet extends HttpServlet {
 		request.getSession().setAttribute("zip", zip);	
 		request.getSession().setAttribute("email", email);	
 		request.getSession().setAttribute("phone", phone);	
-			
 				
 		//JDBC Response
 		//Send ClientInfo obj to DatabaseCon obj function to insert into DB
