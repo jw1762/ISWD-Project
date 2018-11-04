@@ -73,10 +73,8 @@ public class DatabaseCon {
 		+ " deliveryZipCode, deliveryContactName, deliveryContactPhone, deliveryContactEmail, suggestedPrice, totalAmountDue) "		
 		+ "VALUES (" + cid + ", " + gals + ", " + reqDate + ", " + delDate + ", '" + adr + "', '" + city + "', '" + state
 		+ "', '" + zip + "', '" + name + "', '" + phone + "', '" + email + "', " + price + ", " + total + ");";
-		System.out.print(insert);
-		
+			
 		long SQLResult = SQLState.executeLargeUpdate(insert);
-		System.out.print(SQLResult);
 	}
 	
 	public void updateClientSQL(ClientInformation newCI) throws SQLException 
@@ -98,21 +96,15 @@ public class DatabaseCon {
 		String city = newCI.getCity();
 		String state = newCI.getState();
 		int zip = newCI.getZip();
+	 
+		String update = "UPDATE clientInformation SET address = '" + adr + "', city = '"
+				+ city + "', state = '" + state + "', zipCode = "	+ zip + ", phone = '" + phone + "', email = '"
+				+ email + "'" + " WHERE fullName='" + name + "'";
 		
-		String update = "UPDATE clientInformation SET address = ?, city = ?, state = ?, zipCode = ?,"
-				+ "phone = ?, email = ? WHERE fullName = ?";
-		PreparedStatement ps = SQLCon.prepareStatement(update);
-		
-		ps.setString(1, adr);
-		ps.setString(2, city);
-		ps.setString(3, state);
-		ps.setInt(4, zip);
-		ps.setString(5, phone);
-		ps.setString(6, email);
-		ps.setString(7, name);
+		Statement ps = SQLCon.createStatement();		
 	
 		// execute the java preparedstatement
-		ps.executeUpdate();
+		ps.executeUpdate(update);
 	}
 	
 	public QuoteViewer getQuoteHistory() 

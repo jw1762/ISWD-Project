@@ -56,7 +56,7 @@ public class UpdateClientServlet extends HttpServlet {
 		//Send ClientInfo obj to DatabaseCon obj function to insert into DB
 		
 		try {
-			sqlUpdate.sendClientSQL(newCI);
+			sqlUpdate.updateClientSQL(newCI);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
