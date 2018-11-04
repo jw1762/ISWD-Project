@@ -18,7 +18,7 @@
       <li><a href="Index.html">Home</a></li>
       <li><a class="active" href="clientinfo.html">Client Information</a></li>
       <li><a href="getquote.html">Request a Quote</a></li>
-      <li><a href="http://localhost/ISWD-Project/history.php">Quote History</a></li>
+      <li><a href="history.html">Quote History</a></li>
     </ul>
   </nav>
   
