@@ -7,20 +7,11 @@
 //DONE
 Then display quote history.
 We should be able to see all quotes under history.
-
-
-//MOSTLY done.
-//Still need to add some functionality for Client Info, depending on if he wants
-//ALL clients, or just a selected one.
+//DONE
 •	Retrieve data from database and display client information and quote history.
-
-
-//MOSTLY done.
-//Cannot update existing information, but you CAN create new DB entries.
-//A new function implementation will be required in DataBaseCon for this.
+//DONE
 •You should be able to update client information if data exists. 
 If data doesn’t exist then create new record in database when user clicks save.
-
 
 //NOT DONE
 •	NOTE: Suggested Price will be coming from a different module that you will develop during project. For this assignment, make it user entry.
