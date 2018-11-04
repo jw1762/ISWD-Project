@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-<title>Client Information</title>
+<title>Update Client Information</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="styling.css">
@@ -11,7 +11,7 @@
 
 <body>
 <header>
-  <h2>Client Information</h2>
+  <h2>Update Client Information</h2>
 </header>
 
 <section>
@@ -27,10 +27,12 @@
   
   
 <article>
-<h1>Enter NEW Client Information Here</h1>
-<form name="contactCard" method="post" action="clientServlet">
+<h1>Enter The Client Information You Want To Update Here</h1>
+<form name="contactCard" method="get" action="UpdateClientServlet">
+		<b>Enter Name Of The Client You Want To Update:</b><br><br>
 		<b>Name:</b>
 		<br><input type="text" placeholder="Enter Name" name="name" required><br>
+		<b>Enter The Old & New Information Of The Client:</b><br><br>
 		<b>Address:</b>
 		<br><input type="text" placeholder="Address" name="adr" required><br>
 		<b>City:</b>
@@ -44,17 +46,8 @@
 		<b>Email:</b>
 		<br><input type="email" placeholder="Enter Email" name="email" required><br>
 		
-		<input type="submit" name="submitcc">
+		<input type="submit" name="Update Info">
 </form>
-
-<form name="AllClients" method="get" action="AllClientServlet">
-<br><b>Click Here To View All Client Information:</b><br>
-<br><input type="submit" value="View ALL Client Information"></form>
-
-<form name="UpdateClients" method="POST" action="updateclientinfo.html">
-<br><b>Click Here To Update A Client's Information:</b><br>
-<br><input type="submit" value="Update A Client's Info"></form>
-
 </article>
 </section>
 

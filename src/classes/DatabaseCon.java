@@ -3,6 +3,7 @@ package classes;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -76,6 +77,42 @@ public class DatabaseCon {
 		
 		long SQLResult = SQLState.executeLargeUpdate(insert);
 		System.out.print(SQLResult);
+	}
+	
+	public void updateClientSQL(ClientInformation newCI) throws SQLException 
+	{
+		try {
+			Class.forName(driver);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Connection SQLCon = DriverManager.getConnection(testDB, clientID, psw);
+		
+		String name = newCI.getName();
+		String email = newCI.getEmail();
+		String phone = newCI.getPhone();
+		int cid = newCI.getClientID();
+		
+		String adr = newCI.getAddress();
+		String city = newCI.getCity();
+		String state = newCI.getState();
+		int zip = newCI.getZip();
+		
+		String update = "UPDATE clientInformation SET address = ?, city = ?, state = ?, zipCode = ?,"
+				+ "phone = ?, email = ? WHERE fullName = ?";
+		PreparedStatement ps = SQLCon.prepareStatement(update);
+		
+		ps.setString(1, adr);
+		ps.setString(2, city);
+		ps.setString(3, state);
+		ps.setInt(4, zip);
+		ps.setString(5, phone);
+		ps.setString(6, email);
+		ps.setString(7, name);
+	
+		// execute the java preparedstatement
+		ps.executeUpdate();
 	}
 	
 	public QuoteViewer getQuoteHistory() 
@@ -155,6 +192,68 @@ public class DatabaseCon {
 		}
 	//return the list of quotes!
 		return qv;
+	}
+	
+	public AllClientViewer getAllClients() 
+	{
+		AllClientViewer acv = new AllClientViewer();
+		String name, addr, city, state, zip, 
+		phone, email = "";
+		
+	//JDBC Implementation
+	//Connects to database, returns info.
+		try {
+			try {
+				Class.forName(driver);
+				}
+			catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				}			
+		//	DriverManager.registerDriver(new Driver());//Don't think this is needed.
+			Connection testCon = DriverManager.getConnection(testDB, clientID, psw);
+			Statement testState = testCon.createStatement();
+			ResultSet testResult = testState.executeQuery("select * from clientinformation");
+						
+			while (testResult.next())
+			{	//Create a new clientinfo object EVERY time
+				ClientInformation client = new ClientInformation();
+				
+				//reading data from each row while rows exist.
+	
+				name = testResult.getString("fullName");
+				addr = testResult.getString("address");
+				city = testResult.getString("city");
+				state = testResult.getString("state");
+				zip = testResult.getString("zipCode");
+				phone = testResult.getString("phone");
+				email = testResult.getString("email");
+				//set all quote obj data to above strings.
+				
+				int intcid = Integer.parseInt(testResult.getString("clientId"));
+				int iZip = Integer.parseInt(zip); 
+				
+				client.setClientID(intcid);
+				client.setName(name);
+				client.setPhone(phone);
+				client.setEmail(email);
+				client.setAddress(addr);
+				client.setCity(city);
+				client.setState(state);
+				client.setZip(iZip);
+				
+		//add new quote obj to list of quotes
+		//this should be a new quote for every row
+				acv.AllClient.add(client);
+		//repeat
+			}
+			} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+	//return the list of quotes!
+		return acv;
 	}
 	
 	public int getClientID(String name) 

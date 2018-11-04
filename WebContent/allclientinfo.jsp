@@ -49,6 +49,8 @@
         <td><c:out value="${client.zip}" /></td>
         </tr>
     </c:forEach>   
+    <form name="AllClients" method="get" action="AllClientServlet">
+	<br><input type="submit" value="View ALL Client Information">
   </table>
   </article>
 </section>	
