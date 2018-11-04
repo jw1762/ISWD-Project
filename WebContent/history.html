@@ -25,45 +25,25 @@
       <li><a class="active" href="http://localhost/ISWD-Project/history.php">Quote History</a></li>
     </ul>
   </nav>
-  
+    
   <article>
     <h1>Quote History</h1>
 		<table id="quotehistory">
-			<th>Item #</th>
-			<th>Name</th>
-			<th>Location</th>
-			<th>Delivery Date</th>
-			<th>Gallons</th>
-			<th>Rate</th>
-			<th>Total Price</th>  
+			 <th>Client ID</th> 
+    <th>Contact Name</th> 
+    <th>Contact Email</th> 
+    <th>Contact Phone</th> 
+    <th>Gallons Requested</th>
+    <th>Request Date</th>
+    <th>Date of Delivery</th>
+    <th>Delivery Address</th>
+    <th>Delivery State</th>
+    <th>Delivery ZIP</th>
+    <th>Total Due</th></tr>
 		</table>
-	    <script>
-	    
-	    $(document).ready(function()
-		{	  
-			$.getJSON("history.json", function(data) 
-			{ 
-				var uid = 0;
-				var qData = '';
-				$.each(data, function(key, value)
-				{
-					qData += '<tr>';
-					qData += '<td>'+uid+'</td>';
-					qData += '<td>'+value.name+'</td>';
-					qData += '<td>'+value.loc+'</td>';
-					qData += '<td>'+value.delDate+'</td>';
-					qData += '<td>'+value.galReq+'</td>';
-					qData += '<td>'+value.rate+'</td>';
-					qData += '<td>'+value.total+'</td>';
-					qData += '</tr>';
-					uid++;
-				});
-				
-				$('#quotehistory').append(qData);
-			}); 
-	    	
-		}); 
-	    </script>
+		<form name="HistoryRequest" method="get" action="GetHistoryServlet" id="getQuotes">
+	<br><input type="submit" value="Get Quote History">
+</form>
   </article>
 </section>
 

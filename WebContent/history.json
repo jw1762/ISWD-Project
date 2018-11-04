@@ -1,6 +1,0 @@
-[
-{ "rate":"3.5", "galReq":"10.0", "total":"35.0","loc":"Austin, TX","name":"Juan Placeholder", "delDate":"10/10/2010"},
-{ "rate":"2.5", "galReq":"25.0", "total":"62.5","loc":"Dallas, TX","name":"John Doe", "delDate":"10/10/2020"},
-{ "rate":"1.5", "galReq":"20.0", "total":"30.0","loc":"Houston, TX","name":"Firstname Lastname", "delDate":"03/5/2010"},
-{ "rate":"2", "galReq":"88.0", "total":"176.0","loc":"Ft. Worth, TX","name":"some guy", "delDate":"07/11/2015"}
-]
