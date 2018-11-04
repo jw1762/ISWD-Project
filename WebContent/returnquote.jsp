@@ -19,16 +19,14 @@
       <li><a href="Index.html">Home</a></li>
       <li><a href="clientinfo.html">Client Information</a></li>
       <li><a class="active" href="getquote.html">Request a Quote</a></li>
-      <li><a href="http://localhost/ISWD-Project/history.php">Quote History</a></li>
+      <li><a href="history.html">Quote History</a></li>
     </ul>
   </nav>
   
   <article>
     <h1>Quote Offer</h1>
     <p><b>Delivery Date: </b> <%= session.getAttribute("DelDate") %> <br><br>
-	<b>Delivery Location: </b> <%= session.getAttribute("DelAdr") %> 
-	<%= session.getAttribute("DelCity") %> <%= session.getAttribute("DelState") %> 
-	<%= session.getAttribute("DelZip") %><br><br>
+	<b>Delivery Location: </b> <%= session.getAttribute("DelLoc") %><br><br>
 	<b>Number of Gallons: </b> <%= session.getAttribute("GalReq") %> <br><br>
 	<b>Contact Name: </b> <%= session.getAttribute("DelCPN") %> <br><br>
 	<b>Contact Email: </b> <%= session.getAttribute("DelCPE") %> <br><br>
