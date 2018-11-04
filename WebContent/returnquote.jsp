@@ -11,7 +11,6 @@
 <header>
   <h2>Requested Quote</h2>
 </header>
-
 <section>
   <nav>
     <ul>

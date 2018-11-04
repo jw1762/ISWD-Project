@@ -30,7 +30,6 @@
 	<b>Phone:</b> <%= session.getAttribute("phone") %> </p>
   </article>
 </section>
-
 <footer>
   <p>Copyright © 2018 Jordan Williamson & Michelle Pham. All rights reserved.</p>
 </footer>

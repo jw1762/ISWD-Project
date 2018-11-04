@@ -32,7 +32,6 @@ public class Quote {
 	//				//
 	//	getters		//
 	//				//
-	
 	//@return the clientID
 	public int getClientID() {return clientID;}
 	//@return the gallonsRequested;
