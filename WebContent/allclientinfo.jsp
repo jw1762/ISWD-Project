@@ -34,8 +34,7 @@
     <th>Address</th>
     <th>City</th>
     <th>State</th>
-    <th>Zip</th>
-    <th>Total Due</th></tr>
+    <th>Zip</th></tr>
     
     <c:forEach items="${clientList}" var="client">
       <tr>

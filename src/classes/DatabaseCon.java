@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import org.joda.time.DateTime;
 
 public class DatabaseCon {
 	
@@ -56,8 +57,8 @@ public class DatabaseCon {
 		String name = quote.getdeliveryContactName();
 		String email = quote.getdeliveryContactEmail();
 		String phone = quote.getdeliveryContactPhone();
-		Date reqDate = quote.getrequestDate();
-		Date delDate = quote.getdeliveryDate();
+		DateTime reqDate = quote.getrequestDate();
+		DateTime delDate = quote.getdeliveryDate();
 		String adr = quote.getdeliveryAdr();
 		String state = quote.getdeliveryState();
 		String city = quote.getdeliveryCity();

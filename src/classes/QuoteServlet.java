@@ -17,6 +17,11 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
+import java.time.LocalDateTime;
+import org.joda.time.DateTime;
+import org.joda.time.format.*;
+import org.joda.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 //
 //Servlet implementation class QuoteServlet
@@ -31,12 +36,29 @@ public class QuoteServlet extends HttpServlet
 		Quote test = new Quote();
 
 		//int cid = request.getParameter("clientID")
-	//		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+	//		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		    //Date date = dateFormat.parse(request.getParameter("DelDate")); //Date convert error
 			//Converts java.util.Date to java.sql.Date format
 	//		java.util.Date utilDate = dateFormat.parse(request.getParameter("DelDate"));
 	//		java.sql.Date date = new java.sql.Date(utilDate.getTime());
 	//		System.out.println(date);
+			
+/*			//Parse datetime
+			DateTime dt = DateTime.parse(request.getParameter("DelDate")); 
+			System.out.println(dt); 
+			
+			//Converts dt to the correct format
+			DateTimeFormatter dtf  = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSXXX"); //The format dt gets stored in
+			DateTimeFormatter dtf2  = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"); //The format MYSQL datetime is stored
+		    
+			String dateStr = dt.toString();
+
+		    LocalDateTime dateTime = LocalDateTime.parse(dateStr, dtf);
+		    String formatedDateTime = dateTime.format(dtf2);
+		    System.out.println(formatedDateTime);
+		    
+		    System.out.println(dateTime);
+		    System.out.println(dateTime.format(dtf2));*/
 		
 		String cid = request.getParameter("cid");
 		String name = request.getParameter("DelCPN");
@@ -49,13 +71,13 @@ public class QuoteServlet extends HttpServlet
 
 		double gals = Double.parseDouble(request.getParameter("GalReq"));
 		System.out.println(gals);
-		double price = 2.50;
+		double price = Double.parseDouble(request.getParameter("PPG"));
 		System.out.println(price);
 		double total = price*gals;		
 		
 		int intCID = Integer.parseInt(cid);
 		test.setClientID(intCID);
-	//	test.setdeliveryDate(date);
+	//	test.setdeliveryDate(dt);
 		test.setdeliveryAdr(adr);
 		test.setdeliveryCity(city);
 		test.setdeliveryState(state);
@@ -68,7 +90,7 @@ public class QuoteServlet extends HttpServlet
 		test.setTotalAmountDue(total);
 
 	//sets data for JSP file		
-	//	request.getSession().setAttribute("DelDate", date);	
+	//	request.getSession().setAttribute("DelDate", dt);	
 		request.getSession().setAttribute("cid", cid);
 		request.getSession().setAttribute("DelAdr", adr);	
 		request.getSession().setAttribute("DelState", state);	
