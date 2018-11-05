@@ -1,0 +1,1 @@
+Project uses JAVA servlet and a XAMPP server to connect to database.
