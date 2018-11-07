@@ -25,7 +25,9 @@
   <article>
     <h1>Quote Offer</h1>
     <p><b>Delivery Date: </b> <%= session.getAttribute("DelDate") %> <br><br>
-	<b>Delivery Location: </b> <%= session.getAttribute("DelAdr") %><br><br>
+	<b>Delivery Location: </b> <%= session.getAttribute("DelAdr") %> 
+	<%= session.getAttribute("DelCity") %> <%= session.getAttribute("DelState") %>
+	<%= session.getAttribute("DelZip") %><br><br>
 	<b>Number of Gallons: </b> <%= session.getAttribute("GalReq") %> <br><br>
 	<b>Contact Name: </b> <%= session.getAttribute("DelCPN") %> <br><br>
 	<b>Contact Email: </b> <%= session.getAttribute("DelCPE") %> <br><br>

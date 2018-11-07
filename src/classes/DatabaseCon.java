@@ -7,7 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import org.joda.time.DateTime;
 
 public class DatabaseCon {
 	
@@ -57,8 +56,8 @@ public class DatabaseCon {
 		String name = quote.getdeliveryContactName();
 		String email = quote.getdeliveryContactEmail();
 		String phone = quote.getdeliveryContactPhone();
-		DateTime reqDate = quote.getrequestDate();
-		DateTime delDate = quote.getdeliveryDate();
+		Date reqDate = quote.getrequestDate();
+		Date delDate = quote.getdeliveryDate();
 		String adr = quote.getdeliveryAdr();
 		String state = quote.getdeliveryState();
 		String city = quote.getdeliveryCity();
@@ -70,12 +69,37 @@ public class DatabaseCon {
 		///Currently hardcoded clientID 1, because in order to put in a new quote,
 		///the ID must already exist in clientinformation table.
 		///
-		String insert = "INSERT INTO fuelquote (clientId, gallonsRequested, requestDate, deliveryDate, deliveryAddress, deliveryCity, deliveryState,"
+		/*String insert = "INSERT INTO fuelquote (clientId, gallonsRequested, requestDate, deliveryDate, deliveryAddress, deliveryCity, deliveryState,"
 		+ " deliveryZipCode, deliveryContactName, deliveryContactPhone, deliveryContactEmail, suggestedPrice, totalAmountDue) "		
 		+ "VALUES (" + cid + ", " + gals + ", " + reqDate + ", " + delDate + ", '" + adr + "', '" + city + "', '" + state
 		+ "', '" + zip + "', '" + name + "', '" + phone + "', '" + email + "', " + price + ", " + total + ");";
 			
-		long SQLResult = SQLState.executeLargeUpdate(insert);
+		long SQLResult = SQLState.executeLargeUpdate(insert);*/
+		
+		//Create the mysql insert using preparedstatement, the only? way to get date
+		String insert = "INSERT INTO fuelquote (clientId, gallonsRequested, requestDate, deliveryDate, deliveryAddress, deliveryCity, deliveryState,"
+				+ " deliveryZipCode, deliveryContactName, deliveryContactPhone, deliveryContactEmail, suggestedPrice, totalAmountDue) "
+		        + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+		PreparedStatement preparedStmt = SQLCon.prepareStatement(insert);
+		preparedStmt.setInt    (1, cid);
+		preparedStmt.setDouble (2, gals);
+		preparedStmt.setDate   (3, reqDate);
+		preparedStmt.setDate   (4, delDate);
+		preparedStmt.setString (5, adr);
+		preparedStmt.setString (6, city);
+		preparedStmt.setString (7, state);
+		preparedStmt.setString (8, zip);
+		preparedStmt.setString (9, name);
+		preparedStmt.setString (10, phone);
+		preparedStmt.setString (11, email);
+		preparedStmt.setDouble (12, price);
+		preparedStmt.setDouble (13, total);
+	
+		// execute the preparedstatement
+		preparedStmt.execute();
+	  
+		SQLCon.close();
 	}
 	
 	public void updateClientSQL(ClientInformation newCI) throws SQLException 

@@ -5,15 +5,14 @@ package classes;
  */
 
 import java.sql.Date;
-import org.joda.time.DateTime;
 
 public class Quote {
 	
 	int clientID;
 	int quoteID;
 	double gallonsRequested;
-	DateTime deliveryDate;
-	DateTime requestDate;
+	Date deliveryDate;
+	Date requestDate;
 	String deliveryZip;
 	String deliveryAdr, deliveryState, deliveryCity;
 	String deliveryContactName;
@@ -30,9 +29,9 @@ public class Quote {
 	//@return the gallonsRequested;
 	public double getgallonsRequested() {return gallonsRequested;}
 	//@return the deliveryDate
-	public DateTime getdeliveryDate() {return deliveryDate;}
+	public Date getdeliveryDate() {return deliveryDate;}
 	//@return the requestDate
-	public DateTime getrequestDate() {return requestDate;}
+	public Date getrequestDate() {return requestDate;}
 	//@return the del contactName
 	public String getdeliveryContactName() {return deliveryContactName;}
 	//@return the deliveryLocation
@@ -64,9 +63,9 @@ public class Quote {
 	
 	public void setgallonsRequested(double gallonsRequested) {this.gallonsRequested = gallonsRequested;}
 	
-	public void setdeliveryDate(DateTime deliveryDate) {this.deliveryDate = deliveryDate;}
+	public void setdeliveryDate(Date deliveryDate) {this.deliveryDate = deliveryDate;}
 	
-	public void setrequestDate(DateTime requestDate) {this.requestDate = requestDate;}
+	public void setrequestDate(Date requestDate) {this.requestDate = requestDate;}
 	
 	public void setdeliveryZip(String deliveryZip) {this.deliveryZip = deliveryZip;}
 	
