@@ -6,11 +6,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="styling.css">
-<title>Quote Information</title>
+<title>Quote Price</title>
 </head>
 <body>
 <header>
-  <h2>Requested Quote</h2>
+  <h2>Requested Quote Price</h2>
 </header>
 <section>
   <nav>
@@ -24,17 +24,10 @@
   </nav>
   
   <article>
-    <h1>Quote Offer</h1>
-    <p><b>Delivery Date: </b> <%= session.getAttribute("DelDate") %> <br><br>
-	<b>Delivery Location: </b> <%= session.getAttribute("DelAdr") %> 
-	<%= session.getAttribute("DelCity") %> <%= session.getAttribute("DelState") %>
-	<%= session.getAttribute("DelZip") %><br><br>
-	<b>Number of Gallons: </b> <%= session.getAttribute("GalReq") %> <br><br>
-	<b>Contact Name: </b> <%= session.getAttribute("DelCPN") %> <br><br>
-	<b>Contact Email: </b> <%= session.getAttribute("DelCPE") %> <br><br>
-	<b>Contact Phone: </b> <%= session.getAttribute("DelCPP") %> <br><br>
-	<b>Suggested Price: </b> <fmt:formatNumber type="currency" value="${sessionScope.PPG}"/> <br><br>
+    <h1>Quote Price</h1>
+	<p><b>Suggested Price: </b> <fmt:formatNumber type="currency" value="${sessionScope.PPG}"/> <br><br>
 	<b>Total Due: </b> <fmt:formatNumber type="currency" value="${sessionScope.TotalDue}"/> </p>
+	<form><input type="submit" value="Back to quote request" formAction="getquote.html"></form>
   </article>
 </section>	
 

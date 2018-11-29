@@ -3,9 +3,6 @@
 */
 package classes;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,6 +14,8 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.text.DecimalFormat;
+
 //
 //Servlet implementation class QuoteServlet
 //
@@ -28,8 +27,9 @@ public class QuoteServlet extends HttpServlet
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{		
 		Quote test = new Quote();
+		DatabaseCon sql = new DatabaseCon();
+		
 		try {
-		//int cid = request.getParameter("clientID")
 			SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy"); //The format DelDate gets parse to
 			//SimpleDateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); //Format of MYSQL DateTime
 		    //Date date = dateFormat.parse(request.getParameter("DelDate")); //Date convert error
@@ -38,13 +38,13 @@ public class QuoteServlet extends HttpServlet
 			java.util.Date utilDate = dateFormat.parse(request.getParameter("DelDate"));
 			java.sql.Date delDate = new java.sql.Date(utilDate.getTime()); //Formats the date to correct format needed &
 																		//truncates the time, setting it to 00:00:00
-			System.out.println(delDate);
+//			System.out.println(delDate);
 			
 			//Gets the current date for reqDate
 			utilDate = Calendar.getInstance().getTime();
 			Calendar calendar = Calendar.getInstance();
 			java.sql.Date reqDate = new java.sql.Date(calendar.getTime().getTime());
-			System.out.println(reqDate);
+//			System.out.println(reqDate);
 			
 			String cid = request.getParameter("cid");
 			String name = request.getParameter("DelCPN");
@@ -56,10 +56,33 @@ public class QuoteServlet extends HttpServlet
 			String zip = request.getParameter("DelZip");
 	
 			double gals = Double.parseDouble(request.getParameter("GalReq"));
-			System.out.println(gals);
-			double price = Double.parseDouble(request.getParameter("PPG"));
-			System.out.println(price);
-			double total = price*gals;		
+//			System.out.println(gals);
+			double price = 2.19;
+//			System.out.println(price);
+				
+			boolean history = sql.getClientHistory(Integer.parseInt(cid));
+			double locFactor, rateFactor, galFactor, profitFactor = .05, rateFluctuation=.04;
+			DecimalFormat df2 = new DecimalFormat(".##"); //Formats double to 2 decimal places
+			
+			if(state.equals("TX") || state.equals("Tx") || state.equals("tx"))
+				locFactor = .02;
+			else
+				locFactor = .04;
+			
+			if(history)
+				rateFactor = .02;
+			else
+				rateFactor = .03;
+			
+			if(gals > 1000)
+				galFactor = .02;
+			else
+				galFactor = .03;
+			
+			double suggPrice = price + locFactor + rateFactor + galFactor + profitFactor + rateFluctuation;
+			double total = gals * suggPrice;
+//			System.out.println(history + " " + locFactor + " " + rateFactor + " " + galFactor 
+//								+ " " + profitFactor + " " + rateFluctuation + " " + suggPrice + " " + total);		
 			
 			int intCID = Integer.parseInt(cid);
 			test.setClientID(intCID);
@@ -73,8 +96,8 @@ public class QuoteServlet extends HttpServlet
 			test.setdeliveryContactEmail(email);
 			test.setdeliveryContactName(name);
 			test.setdeliveryContactPhone(phone);
-			test.setsuggestedPrice(price);
-			test.setTotalAmountDue(total);
+			test.setsuggestedPrice(Double.parseDouble(df2.format(suggPrice)));
+			test.setTotalAmountDue(Double.parseDouble(df2.format(total)));
 	
 		//sets data for JSP file		
 			request.getSession().setAttribute("DelDate", delDate);	
@@ -87,8 +110,8 @@ public class QuoteServlet extends HttpServlet
 			request.getSession().setAttribute("DelCPN", name);	
 			request.getSession().setAttribute("DelCPE", email);	
 			request.getSession().setAttribute("DelCPP", phone);	
-			request.getSession().setAttribute("PPG", price);	
-			request.getSession().setAttribute("TotalDue", total);	
+			request.getSession().setAttribute("PPG", Double.parseDouble(df2.format(suggPrice)));	
+			request.getSession().setAttribute("TotalDue", Double.parseDouble(df2.format(total)));	
 					
 		//Calls new DatabaseCon class, containing functions for various DB actions.
 			DatabaseCon querydb = new DatabaseCon();

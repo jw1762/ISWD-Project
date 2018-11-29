@@ -302,7 +302,28 @@ public class DatabaseCon {
 			}	
 			return intCid;
 	}
-		//
-		//
-
+	public boolean getClientHistory(int id) 
+	{	
+		//JDBC Implementation
+		//Connects to database, checks if client requested fuel before.
+		try {
+			try {
+				Class.forName(driver);
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}			
+		//	DriverManager.registerDriver(new Driver());//Don't think this is needed.
+			Connection testCon = DriverManager.getConnection(testDB, clientID, psw);
+			Statement testState = testCon.createStatement();
+			ResultSet testResult = testState.executeQuery("select * from fuelquote WHERE clientId='" + id + "';");
+			while (testResult.next()){
+				return true; //returns true if client history found
+		    }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		return false; //returns false by default
+	}
 }
