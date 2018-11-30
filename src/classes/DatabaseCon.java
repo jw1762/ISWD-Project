@@ -7,6 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class DatabaseCon {
 	
@@ -192,11 +194,21 @@ public class DatabaseCon {
 				quote.setdeliveryContactName(delName);
 				quote.setdeliveryContactPhone(delPhone);
 				
-		//		Date delDate = Date.parse(delD);
-		//		Date reqDate = Date.parse(reqD);
-		//		quote.setdeliveryDate(delDate);
-		//		quote.setrequestDate(reqDate);
-				
+				try {
+					SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+					java.util.Date utilDelDate = dateFormat.parse(delD);
+					java.sql.Date delDate = new java.sql.Date(utilDelDate.getTime());
+					
+					java.util.Date utilReqDate = dateFormat.parse(reqD);
+					java.sql.Date reqDate = new java.sql.Date(utilReqDate.getTime());
+					
+					//Date delDate = dateFormat.parse(delD);
+					//Date reqDate = dateFormat.parse(reqD);
+					quote.setdeliveryDate(delDate);
+					quote.setrequestDate(reqDate);
+				}catch(ParseException e) {
+					  e.printStackTrace();
+				}
 		//add new quote obj to list of quotes
 		//this should be a new quote for every row
 				qv.QuoteHistory.add(quote);
