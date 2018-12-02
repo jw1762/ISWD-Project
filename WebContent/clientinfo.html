@@ -27,7 +27,12 @@
   
   
 <article>
-<h1>Enter NEW Client Information Here</h1>
+<form name="AllClients" method="post" action="AllClientServlet">
+<br><b>To View All Client Information Or Update A Client's Information:</b><br><br>
+<input type="submit" value="View ALL Client Information">
+<input type="submit" value="Update A Client's Info" formAction="updateclientinfo.html"></form><br>
+
+<h1>Enter NEW Client Information Here:</h1>
 <form name="contactCard" method="post" action="clientServlet">
 		<b>Name:</b>
 		<br><input type="text" placeholder="Enter Name" name="name" required><br>
@@ -46,14 +51,6 @@
 		
 		<input type="submit" name="submitcc">
 </form>
-
-<form name="AllClients" method="post" action="AllClientServlet">
-<br><b>Click Here To View All Client Information:</b><br>
-<br><input type="submit" value="View ALL Client Information"></form>
-
-<form name="UpdateClients" method="post" action="updateclientinfo.html">
-<br><b>Click Here To Update A Client's Information:</b><br>
-<br><input type="submit" value="Update A Client's Info"></form>
 
 </article>
 </section>

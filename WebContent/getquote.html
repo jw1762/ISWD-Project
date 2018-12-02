@@ -5,6 +5,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="styling.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="quotescript.js"></script>
 </head>
 
 <body>
@@ -23,32 +26,35 @@
   </nav>
   
  <article>
+ <button id="load">Load Previous Inputs</button>
     <h1>Order Form</h1>
-<form name="OrderForm" method="get" action="QuoteServlet">
+<form name="OrderForm" method="get" Action="QuoteServlet">
 	<b>Client ID:</b>
-    <br><input type="number" name="cid" placeholder="Only Existing Client ID's are Valid" required><br>
+    <br><input type="number" name="cid" class="OrderForm" id="cid" placeholder="Only Existing Client ID's are Valid" required><br>
     <b>Gallons Requested:</b>
-    <br><input type="number" name="GalReq" placeholder="Enter Gallons" required><br>
+    <br><input type="number" name="GalReq" class="OrderForm" id="GalReq" placeholder="Enter Gallons" required><br>
     <b>Delivery Date:</b>
-    <br><input type="date" name="DelDate" pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}" placeholder="MM/DD/YYYY" required><br>
+    <br><input type="date" name="DelDate" class="OrderForm" id="DelDate" pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}" placeholder="MM/DD/YYYY" required><br>
     <b>Delivery Address:</b>
-    <br><input type="text" name="DelAdr" placeholder="Address" required><br>
+    <br><input type="text" name="DelAdr" class="OrderForm" id="DelAdr" placeholder="Address" required><br>
     <b>Delivery City:</b>
-    <br><input type="text" name="DelCity" placeholder="City" required><br>
+    <br><input type="text" name="DelCity" class="OrderForm" id="DelCity" placeholder="City" required><br>
     <b>Delivery State:</b>
-    <br><input type="text" name="DelState" placeholder="State" required><br>
+    <br><input type="text" name="DelState" class="OrderForm" id="DelState" placeholder="State" required><br>
     <b>Delivery Zip:</b>
-    <br><input type="text" name="DelZip" placeholder="Zipcode" required><br>
+    <br><input type="text" name="DelZip" class="OrderForm" id="DelZip" placeholder="Zipcode" required><br>
     <b>Delivery Contact Person Name:</b>
-    <br><input type="text" name="DelCPN"  pattern="[A-Z a-z]{3,45}" placeholder="Enter Contact Name" required><br>
+    <br><input type="text" name="DelCPN" class="OrderForm" id="DelCPN" pattern="[A-Z a-z]{3,45}" placeholder="Enter Contact Name" required><br>
     <b>Delivery Contact Person Phone:</b>
-    <br><input type="tel" name="DelCPP" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" placeholder="5129992020" required><br>
+    <br><input type="tel" name="DelCPP" class="OrderForm" id="DelCPP" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" placeholder="5129992020" required><br>
     <b>Delivery Contact Person Email:</b>
-    <br><input type="email" name="DelCPE" placeholder="Enter Contact Email" required><br>
-    <b>Current Price per Gallon: $2.50</b><br><br>
+    <br><input type="email" name="DelCPE" class="OrderForm" id="DelCPE" placeholder="Enter Contact Email" required><br>
+    <b>Suggested Price: Submit to Calculate</b><br><br> 
   	<b>Total Amount Due: Submit to Calculate</b><br><br>    
-    <br><input type="submit" value="Submit Request">
+    <input type="submit" name="submit" id="submit" value="Submit Request">
+    <input type="submit" name="getPrice" id="getPrice" value="Get Price" formAction="PriceServlet">
 </form> 
+
 </article>
 </section>
 

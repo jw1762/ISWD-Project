@@ -34,8 +34,7 @@
     <th>Address</th>
     <th>City</th>
     <th>State</th>
-    <th>Zip</th>
-    <th>Total Due</th></tr>
+    <th>Zip</th></tr>
     
     <c:forEach items="${clientList}" var="client">
       <tr>
@@ -49,12 +48,10 @@
         <td><c:out value="${client.zip}" /></td>
         </tr>
     </c:forEach>   
-    
-    <form name="AllClients" method="get" action="AllClientServlet">
-	<br><input type="submit" value="View ALL Client Information">
-	</form>
-	
   </table>
+	<form name="AllClients" method="get" action="AllClientServlet">
+		<br><input type="submit" value="View ALL Client Information">
+	</form>
   </article>
 </section>	
 
