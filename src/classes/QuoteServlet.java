@@ -29,23 +29,10 @@ public class QuoteServlet extends HttpServlet
 		Quote test = new Quote();
 		DatabaseCon sql = new DatabaseCon();
 		
-		try {
-			SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy"); //The format DelDate gets parse to
-			//SimpleDateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); //Format of MYSQL DateTime
-		    //Date date = dateFormat.parse(request.getParameter("DelDate")); //Date convert error
+		try {		
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 			
-			//Converts java.util.Date to java.sql.Date format
-			java.util.Date utilDate = dateFormat.parse(request.getParameter("DelDate"));
-			java.sql.Date delDate = new java.sql.Date(utilDate.getTime()); //Formats the date to correct format needed &
-																		//truncates the time, setting it to 00:00:00
-//			System.out.println(delDate);
-			
-			//Gets the current date for reqDate
-			utilDate = Calendar.getInstance().getTime();
-			Calendar calendar = Calendar.getInstance();
-			java.sql.Date reqDate = new java.sql.Date(calendar.getTime().getTime());
-//			System.out.println(reqDate);
-			
+			//Get all the data inputs.
 			String cid = request.getParameter("cid");
 			String name = request.getParameter("DelCPN");
 			String email = request.getParameter("DelCPE");
@@ -54,17 +41,23 @@ public class QuoteServlet extends HttpServlet
 			String state = request.getParameter("DelState");
 			String city = request.getParameter("DelCity");
 			String zip = request.getParameter("DelZip");
+			String delD = request.getParameter("DelDate");
+			
+			//Converts java.util.Date to java.sql.Date format
+			java.util.Date utilDelDate = dateFormat.parse(delD);
+			java.sql.Date delDate = new java.sql.Date(utilDelDate.getTime());
+
+			java.util.Date utilReqDate = new java.util.Date();
+			java.sql.Date reqDate = new java.sql.Date(utilReqDate.getTime());	
 	
 			double gals = Double.parseDouble(request.getParameter("GalReq"));
-//			System.out.println(gals);
 			double price = 2.19;
-//			System.out.println(price);
-				
+
 			boolean history = sql.getClientHistory(Integer.parseInt(cid));
 			double locFactor, rateFactor, galFactor, profitFactor = .05, rateFluctuation=.04;
 			DecimalFormat df2 = new DecimalFormat(".##"); //Formats double to 2 decimal places
 			
-			if(state.equals("TX") || state.equals("Tx") || state.equals("tx"))
+			if(state.equals("TX") || state.equals("Tx") || state.equals("tx") || state.equals("tX"))
 				locFactor = .02;
 			else
 				locFactor = .04;
@@ -83,7 +76,8 @@ public class QuoteServlet extends HttpServlet
 			double total = gals * suggPrice;
 //			System.out.println(history + " " + locFactor + " " + rateFactor + " " + galFactor 
 //								+ " " + profitFactor + " " + rateFluctuation + " " + suggPrice + " " + total);		
-			
+				
+			//set values for quote obj.
 			int intCID = Integer.parseInt(cid);
 			test.setClientID(intCID);
 			test.setdeliveryDate(delDate);
@@ -113,7 +107,7 @@ public class QuoteServlet extends HttpServlet
 			request.getSession().setAttribute("PPG", Double.parseDouble(df2.format(suggPrice)));	
 			request.getSession().setAttribute("TotalDue", Double.parseDouble(df2.format(total)));	
 					
-		//Calls new DatabaseCon class, containing functions for various DB actions.
+		//Calls DatabaseCon class, containing functions for various DB actions.
 			DatabaseCon querydb = new DatabaseCon();
 		//Send new Quote Object to the SQL database as an SQL entry.
 			try {

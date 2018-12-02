@@ -31,7 +31,7 @@ public class PriceServlet extends HttpServlet
 		boolean history = sql.getClientHistory(Integer.parseInt(cid));
 		double locFactor, rateFactor, galFactor, profitFactor = .05, rateFluctuation=.04;
 
-		if(state.equals("TX") || state.equals("Tx") || state.equals("tx"))
+		if(state.equals("TX") || state.equals("Tx") || state.equals("tx") || state.equals("tX"))
 			locFactor = .02;
 		else
 			locFactor = .04;

@@ -98,6 +98,17 @@ input[type=number]:focus, input[type=tel]:focus, input[type=date]:focus, input[t
     outline: none;
 }
 
+#load{
+	background-color: #7371FC;
+    color: white;
+    padding: 16px 20px; 
+    margin: 0px 30px 10px 0px;
+    border: none;
+    cursor: pointer;
+    width: 15%;
+    opacity: 0.9;
+}
+
 input[type=submit]{
 	background-color: #7371FC;
     color: white;

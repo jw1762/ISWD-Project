@@ -67,16 +67,6 @@ public class DatabaseCon {
 		double gals = quote.getgallonsRequested();
 		double price = quote.getsuggestedPrice();
 		double total = quote.getTotalAmountDue();
-				
-		///Currently hardcoded clientID 1, because in order to put in a new quote,
-		///the ID must already exist in clientinformation table.
-		///
-		/*String insert = "INSERT INTO fuelquote (clientId, gallonsRequested, requestDate, deliveryDate, deliveryAddress, deliveryCity, deliveryState,"
-		+ " deliveryZipCode, deliveryContactName, deliveryContactPhone, deliveryContactEmail, suggestedPrice, totalAmountDue) "		
-		+ "VALUES (" + cid + ", " + gals + ", " + reqDate + ", " + delDate + ", '" + adr + "', '" + city + "', '" + state
-		+ "', '" + zip + "', '" + name + "', '" + phone + "', '" + email + "', " + price + ", " + total + ");";
-			
-		long SQLResult = SQLState.executeLargeUpdate(insert);*/
 		
 		//Create the mysql insert using preparedstatement, the only? way to get date
 		String insert = "INSERT INTO fuelquote (clientId, gallonsRequested, requestDate, deliveryDate, deliveryAddress, deliveryCity, deliveryState,"
